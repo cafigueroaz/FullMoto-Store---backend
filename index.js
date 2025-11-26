@@ -4,6 +4,10 @@ const app = express();
 
 const PORT = 3000;
 
+app.get(`/health`, (req, res) => {
+  res.send(`<h1>Health</h1>`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);
 });

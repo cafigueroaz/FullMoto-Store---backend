@@ -1,0 +1,28 @@
+{
+  "name": "fullmoto",
+  "version": "1.0.0",
+  "description": "API REST para FullMoto Store",
+  "keywords": [
+    "API",
+    "node",
+    "express",
+    "bcrypt",
+    "jwt",
+    "mongoose."
+  ],
+  "homepage": "https://github.com/cafigueroaz/FullMoto-Stor---backend#readme",
+  "bugs": {
+    "url": "https://github.com/cafigueroaz/FullMoto-Stor---backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cafigueroaz/FullMoto-Stor---backend.git"
+  },
+  "license": "ISC",
+  "author": "Cristian Figueroa Zea <figueroaz.ca@gmail.com>",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

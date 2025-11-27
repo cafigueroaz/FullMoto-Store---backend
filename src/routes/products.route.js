@@ -1,0 +1,8 @@
+const express = require(`express`);
+const router = express.Router();
+
+router.get(`/product`, (req, res) => {
+  res.send(`<h1>Products</h1>`);
+});
+
+module.exports = router;

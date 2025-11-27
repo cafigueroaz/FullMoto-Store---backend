@@ -20,10 +20,13 @@
   },
   "license": "ISC",
   "author": "Cristian Figueroa Zea <figueroaz.ca@gmail.com>",
+  "contributors": [
+    "Gabriel Hernandez Plazas <gabohernandezplazas27@gmail.com"
+  ],
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch index.js"
+    "dev": "node --watch ./src/index.js"
   },
   "dependencies": {
     "express": "^5.1.0"

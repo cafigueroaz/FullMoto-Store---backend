@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.get(`/health`, (req, res) => {
-  res.send(`<h1>Health</h1>`);
+  res.json({ path: `/health`, msg: `Welcome to FullMoto` });
 });
 
 app.use(`/api/v1`, require(`./routes/users.route.js`));

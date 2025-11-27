@@ -2,7 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 
 router.get(`/product`, (req, res) => {
-  res.send(`<h1>Products</h1>`);
+  res.json([{ name: `Casco AGV`, Price: 3000 }]);
 });
 
 module.exports = router;

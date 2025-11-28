@@ -23,7 +23,7 @@
   "contributors": [
     "Gabriel Hernandez Plazas <gabohernandezplazas27@gmail.com"
   ],
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "node --watch ./src/index.js"

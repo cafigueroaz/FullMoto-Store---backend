@@ -1,8 +1,8 @@
 import express from "express";
-const router = express.Router();
+import { Router } from "express";
+import { createUser } from "../controllers/users.controlers.js";
+const router = Router();
 
-router.get(`/`, (req, res) => {
-  res.json([{ name: `Gabo`, edad: 14 }]);
-});
+router.post("/", createUser);
 
 export default router;

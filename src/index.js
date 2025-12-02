@@ -13,6 +13,8 @@ app.get(`/health`, (req, res) => {
   res.json({ path: `/health`, msg: `Welcome to FullMoto` });
 });
 
+app.use(express.json());  
+
 app.use(`/api/v1/users`, userRoutes);
 app.use(`/api/v1/products`, productRoutes);
 

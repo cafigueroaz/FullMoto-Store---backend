@@ -8,8 +8,8 @@ const dbGetAllUsers = async () => {
   return await Usermodel.find();
 };
 
-const dbGetUserById = async (idUser) => {
-  return await Usermodel.findOne({ _id: idUser });
+const dbGetUserById = async (_id) => {
+  return await Usermodel.findOne({ _id });
 };
 
 export { dbRegisterUser, dbGetAllUsers, dbGetUserById };

@@ -1,11 +1,11 @@
-import Usermodel from "../models/User.model.js"
+import Usermodel from "../models/User.model.js";
 
-const registerUser = async (newUser) => {
-    
-    return await Usermodel.create(newUser);
-    
-}
+const dbRegisterUser = async (newUser) => {
+  return await Usermodel.create(newUser);
+};
 
-export {
-    registerUser
-}
+const dbGetAllUsers = async () => {
+  return await Usermodel.find();
+};
+
+export { dbRegisterUser, dbGetAllUsers };

@@ -1,5 +1,9 @@
 import Usermodel from "../models/User.model.js";
-import { dbRegisterUser, dbGetAllUsers } from "../services/user.services.js";
+import {
+  dbRegisterUser,
+  dbGetAllUsers,
+  dbGetUserById,
+} from "../services/user.services.js";
 
 const createUser = async (req, res) => {
   try {
@@ -37,4 +41,21 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-export { createUser, getAllUsers };
+const getUserById = async (req, res) => {
+  try {
+    const idUser = req.params.idUser;
+    const user = await dbGetUserById(idUser);
+
+    res.json({
+      id: idUser,
+      user,
+    });
+  } catch (error) {
+    console.error(error);
+    res.json({
+      msg: "Error: no se pudo obtener el usuario por Id",
+    });
+  }
+};
+
+export { createUser, getAllUsers, getUserById };

@@ -4,6 +4,7 @@ import {
   dbGetAllUsers,
   dbGetUserById,
   dbDeletedUserById,
+  dbUpdateUserById,
 } from "../services/user.services.js";
 
 const createUser = async (req, res) => {
@@ -75,4 +76,23 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-export { createUser, getAllUsers, getUserById, deleteUserById };
+const updateUserById = async (req, res) => {
+  try {
+    const idUser = req.params.idUser;
+    const inputData = req.body;
+
+    const updateUser = await dbUpdateUserById(idUser, inputData);
+
+    res.json({
+      msg: "Usuario actualizado",
+      updateUser,
+    });
+  } catch (error) {
+    console.error(error);
+    res.json({
+      msg: "Error: no se pudo actualizar el usuario por Id",
+    });
+  }
+};
+
+export { createUser, getAllUsers, getUserById, deleteUserById, updateUserById };

@@ -1,15 +1,19 @@
-import Usermodel from "../models/User.model.js";
+import userModel from "../models/User.model.js";
 
 const dbRegisterUser = async (newUser) => {
-  return await Usermodel.create(newUser);
+  return await userModel.create(newUser);
 };
 
 const dbGetAllUsers = async () => {
-  return await Usermodel.find();
+  return await userModel.find();
 };
 
 const dbGetUserById = async (_id) => {
-  return await Usermodel.findOne({ _id });
+  return await userModel.findOne({ _id });
 };
 
-export { dbRegisterUser, dbGetAllUsers, dbGetUserById };
+const dbDeletedUserById = async (_id) => {
+  return await userModel.findOneAndDelete({ _id });
+};
+
+export { dbRegisterUser, dbGetAllUsers, dbGetUserById, dbDeletedUserById };

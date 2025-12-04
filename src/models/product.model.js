@@ -8,12 +8,6 @@ const ProductSchema = new Schema(
       trim: true,
     },
 
-    // URL limpia
-    slug: {
-      type: String,
-      trim: true,
-      lowercase: true,
-    },
     description: {
       type: String,
       required: true,
@@ -25,23 +19,14 @@ const ProductSchema = new Schema(
       min: 0,
     },
 
-    discountPercentage: {
-      type: Number,
-      min: 0,
-      max: 100,
-    },
     stock: {
       type: Number,
       required: true,
       min: 0,
     },
 
-    barcode: {
-      type: String,
-      trim: true,
-    },
     categoryId: {
-      type: Schema.Types.ObjectId,
+      type: String, //TODO: Object Id
       ref: "categories",
       required: true,
     },
@@ -63,6 +48,7 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      default: "imagen pendiente",
     },
     imageGallery: [
       {

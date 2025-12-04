@@ -1,9 +1,11 @@
+import productModel from "../models/product.model.js";
 import {
   dbRegisterProduct,
   dbGetAllProducts,
   dbGetProductById,
   dbDeletedProductById,
   dbUpdateProductById,
+  dbGetProductByCategory,
 } from "../services/product.services.js";
 
 const createProduct = async (req, res) => {
@@ -25,7 +27,6 @@ const createProduct = async (req, res) => {
     });
   }
 };
-("");
 
 const getAllProducts = async (req, res) => {
   try {
@@ -95,10 +96,24 @@ const updateProductById = async (req, res) => {
   }
 };
 
+const getProductByCategory = async (req, res) => {
+  try {
+    const category = req.body.categoryId;
+
+    const products = await dbGetProductByCategory(category);
+
+    res.json({ products });
+  } catch (error) {
+    console.error(error);
+    res.json({ msg: "Error: no se pudo encontrar el producto por categoria" });
+  }
+};
+
 export {
   createProduct,
   getAllProducts,
   getProductById,
   deleteProductById,
   updateProductById,
+  getProductByCategory,
 };

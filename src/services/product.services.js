@@ -20,10 +20,17 @@ const dbUpdateProductById = async (_id, inputData) => {
   return await productModel.findByIdAndUpdate(_id, inputData, { new: true });
 };
 
+const dbGetProductByCategory = async (category) => {
+  return await productModel.find({
+    categoryId: category,
+  });
+};
+
 export {
   dbRegisterProduct,
   dbGetAllProducts,
   dbGetProductById,
   dbDeletedProductById,
   dbUpdateProductById,
+  dbGetProductByCategory,
 };

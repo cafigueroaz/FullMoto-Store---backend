@@ -26,6 +26,16 @@ const dbGetProductByCategory = async (category) => {
   });
 };
 
+const dbGetProductsByPriceRange = async (minPrice, maxPrice) => {
+  return await productModel
+    .find({
+      price: { $gte: minPrice, $lte: maxPrice },
+    })
+    .sort({
+      price: 1,
+    });
+};
+
 export {
   dbRegisterProduct,
   dbGetAllProducts,
@@ -33,4 +43,5 @@ export {
   dbDeletedProductById,
   dbUpdateProductById,
   dbGetProductByCategory,
+  dbGetProductsByPriceRange,
 };

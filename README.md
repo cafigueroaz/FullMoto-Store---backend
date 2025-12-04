@@ -11,6 +11,9 @@ Entidad: Products
 - [x] Actualizar producto.
 - [x] Eliminar producto.
 - [x] Buscar producto por ID.
-- [ ] Buscar productos por categoría.
-- [ ] Buscar productos por rango de precio.
+- [x] Buscar productos por categoría.
+- [x] Buscar productos por rango de precio.
 - [ ] Buscar productos por marca.
+- [ ] Paginación de productos.
+- [ ] Ordenar productos (precio asc/desc, recientes, populares)
+- [ ] Obtener productos relacionados por categoría o marca

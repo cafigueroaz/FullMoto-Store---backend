@@ -6,6 +6,7 @@ import {
   dbDeletedProductById,
   dbUpdateProductById,
   dbGetProductByCategory,
+  dbGetProductsByPriceRange,
 } from "../services/product.services.js";
 
 const createProduct = async (req, res) => {
@@ -109,6 +110,14 @@ const getProductByCategory = async (req, res) => {
   }
 };
 
+const getProductsByPriceRange = async (req, res) => {
+  const minPrice = req.body.min;
+  const maxPrice = req.body.max;
+
+  const products = await dbGetProductsByPriceRange(minPrice, maxPrice);
+  res.json({ minPrice, maxPrice, products });
+};
+
 export {
   createProduct,
   getAllProducts,
@@ -116,4 +125,5 @@ export {
   deleteProductById,
   updateProductById,
   getProductByCategory,
+  getProductsByPriceRange,
 };

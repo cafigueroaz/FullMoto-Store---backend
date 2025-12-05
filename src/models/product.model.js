@@ -26,9 +26,9 @@ const ProductSchema = new Schema(
     },
 
     categoryId: {
-      type: String, //TODO: Object Id
-      // ref: "categories",
-      required: true,
+      type: Schema.Types.ObjectId,
+      ref: "category",
+      required: false, //--------------------
     },
     brand: {
       type: String,

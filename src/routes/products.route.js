@@ -8,6 +8,8 @@ import {
   updateProductById,
   getProductByCategory,
   getProductsByPriceRange,
+  getProductsByBrand,
+  getProductsByCompatibility,
 } from "../controllers/products.controllers.js";
 
 const router = Router();
@@ -15,6 +17,8 @@ const router = Router();
 // Products:
 router.post("/", createProduct);
 router.get("/", getAllProducts);
+router.get("/marcas", getProductsByBrand);
+router.get("/modelo", getProductsByCompatibility);
 router.get("/price-range", getProductsByPriceRange);
 router.get("/categorias", getProductByCategory);
 router.get("/:idProduct", getProductById);

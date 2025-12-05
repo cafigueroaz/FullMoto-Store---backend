@@ -36,6 +36,16 @@ const dbGetProductsByPriceRange = async (minPrice, maxPrice) => {
     });
 };
 
+const dbGetProductsByBrand = async (brandSearch) => {
+  return await productModel.find({ brand: brandSearch });
+};
+
+const dbGetProductsByCompatibility = async (motoRef) => {
+  return await productModel.find({
+    compatibleWith: { $elemMatch: { $regex: motoRef, $options: "i" } },
+  });
+};
+
 export {
   dbRegisterProduct,
   dbGetAllProducts,
@@ -44,4 +54,6 @@ export {
   dbUpdateProductById,
   dbGetProductByCategory,
   dbGetProductsByPriceRange,
+  dbGetProductsByBrand,
+  dbGetProductsByCompatibility,
 };

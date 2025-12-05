@@ -13,7 +13,8 @@ Entidad: Products
 - [x] Buscar producto por ID.
 - [x] Buscar productos por categoría.
 - [x] Buscar productos por rango de precio.
-- [ ] Buscar productos por marca.
+- [x] Buscar productos por marca.
+- [ ] Buscar por compatibilidad.
 - [ ] Paginación de productos.
 - [ ] Ordenar productos (precio asc/desc, recientes, populares)
 - [ ] Obtener productos relacionados por categoría o marca

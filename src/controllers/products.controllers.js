@@ -7,6 +7,8 @@ import {
   dbUpdateProductById,
   dbGetProductByCategory,
   dbGetProductsByPriceRange,
+  dbGetProductsByBrand,
+  dbGetProductsByCompatibility,
 } from "../services/product.services.js";
 
 const createProduct = async (req, res) => {
@@ -118,6 +120,37 @@ const getProductsByPriceRange = async (req, res) => {
   res.json({ minPrice, maxPrice, products });
 };
 
+const getProductsByBrand = async (req, res) => {
+  try {
+    const brandSearch = req.body.brand;
+
+    const products = await dbGetProductsByBrand(brandSearch);
+
+    res.json({ products, brandSearch });
+  } catch (error) {
+    console.error(error);
+    res.json({
+      msg: "Error: no se pudo encontrar el producto por categoria",
+    });
+  }
+};
+
+const getProductsByCompatibility = async (req, res) => {
+  try {
+    const motoRef = req.body.motoRef;
+
+    const products = await dbGetProductsByCompatibility(motoRef);
+
+    res.json({ motoRef, products });
+  } catch (error) {
+    console.error(error);
+
+    res.json({
+      msg: "Error: No se pueden obtener los productos por marca",
+    });
+  }
+};
+
 export {
   createProduct,
   getAllProducts,
@@ -126,4 +159,6 @@ export {
   updateProductById,
   getProductByCategory,
   getProductsByPriceRange,
+  getProductsByBrand,
+  getProductsByCompatibility,
 };

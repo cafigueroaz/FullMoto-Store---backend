@@ -14,7 +14,7 @@ Entidad: Products
 - [x] Buscar productos por categoría.
 - [x] Buscar productos por rango de precio.
 - [x] Buscar productos por marca.
-- [ ] Buscar por compatibilidad.
+- [x] Buscar por compatibilidad.
 - [ ] Paginación de productos.
 - [ ] Ordenar productos (precio asc/desc, recientes, populares)
 - [ ] Obtener productos relacionados por categoría o marca

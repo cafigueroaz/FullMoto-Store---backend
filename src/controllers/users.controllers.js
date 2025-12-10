@@ -8,6 +8,8 @@ import {
   dbGetUserByEmail,
 } from "../services/user.services.js";
 
+import { encriptedPassword } from "../helpers/bcrypt.helpers.js";
+
 const createUser = async (req, res) => {
   try {
     const data = req.body;
@@ -20,12 +22,15 @@ const createUser = async (req, res) => {
       return res.json({ msg: "No se puede registrar, el usuario ya existe" });
     }
 
+    data.password = encriptedPassword(data.password);
+    console.log("Antes de encriptar", data);
+
     const dataRegistered = await dbRegisterUser(data);
+
     res.json({
-      msg: "Se creo un usuario",
       dataRegistered,
     });
-  } catch {
+  } catch (error) {
     console.error(error);
     res.json({
       msg: "Error: no se pudo crear el usuario",
@@ -38,7 +43,6 @@ const getAllUsers = async (req, res) => {
     const users = await dbGetAllUsers();
 
     res.json({
-      msg: "Obtiene todos los usuarios",
       users,
     });
   } catch (error) {

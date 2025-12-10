@@ -5,6 +5,7 @@ import {
   dbGetUserById,
   dbDeletedUserById,
   dbUpdateUserById,
+  dbGetUserByEmail,
 } from "../services/user.services.js";
 
 const createUser = async (req, res) => {
@@ -13,8 +14,13 @@ const createUser = async (req, res) => {
 
     console.log(data);
 
-    const dataRegistered = await dbRegisterUser(data);
+    const userFound = await dbGetUserByEmail(data.email);
 
+    if (userFound) {
+      return res.json({ msg: "No se puede registrar, el usuario ya existe" });
+    }
+
+    const dataRegistered = await dbRegisterUser(data);
     res.json({
       msg: "Se creo un usuario",
       dataRegistered,

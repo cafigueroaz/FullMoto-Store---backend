@@ -12,6 +12,10 @@ const dbGetUserById = async (_id) => {
   return await userModel.findOne({ _id });
 };
 
+const dbGetUserByEmail = async (email) => {
+  return await userModel.findOne({ email });
+};
+
 const dbDeletedUserById = async (_id) => {
   return await userModel.findOneAndDelete({ _id });
 };
@@ -26,4 +30,5 @@ export {
   dbGetUserById,
   dbDeletedUserById,
   dbUpdateUserById,
+  dbGetUserByEmail,
 };

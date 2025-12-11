@@ -1,5 +1,6 @@
 import { verifyEncriptedPassword } from "../helpers/bcrypt.helpers.js";
 import { dbGetUserByEmail } from "../services/user.services.js";
+import { generateToken } from "../helpers/jwt.helpers.js";
 
 const loginUser = async (req, res) => {
   const inputData = req.body;
@@ -20,7 +21,19 @@ const loginUser = async (req, res) => {
     return res.json({ msg: "Credenciales invalidas." });
   }
 
-  res.json({ msg: "usuario logueado" });
+  const payload = {
+    name: userFound.name,
+    email: userFound.email,
+    role: userFound.role,
+  };
+
+  const token = generateToken(payload);
+
+  const jsonUserFound = userFound.toObject();
+
+  delete jsonUserFound.password;
+
+  res.json({ user: jsonUserFound, token });
 };
 
 export { loginUser };

@@ -22,10 +22,14 @@ const createUser = async (req, res) => {
 
     data.password = encriptedPassword(data.password);
 
-    const dataRegistered = await dbRegisterUser(data);
+    const userRegistred = await dbRegisterUser(data);
+
+    const jsonDataRegistred = userRegistred.toObject();
+
+    delete jsonDataRegistred.password;
 
     res.json({
-      dataRegistered,
+      jsonDataRegistred,
     });
   } catch (error) {
     console.error(error);

@@ -1,7 +1,7 @@
-import jwt from "jwsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const generateToken = (payload) => {
-  jwt.sign(payload, "aaaaaaaaaaaaaaa", { expiresIn: "1h" });
+  return jwt.sign(payload, "aaaaaaaaaaaaaaa", { expiresIn: "1h" });
 };
 
 export { generateToken };

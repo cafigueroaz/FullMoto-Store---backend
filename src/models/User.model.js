@@ -30,7 +30,7 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["super-admin", "admin", "editor", "colaborator", "registered"],
+      enum: ["admin", "editor", "colaborator", "registered"],
       default: "registered",
     },
     isActive: {

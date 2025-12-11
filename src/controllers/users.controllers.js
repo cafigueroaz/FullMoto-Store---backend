@@ -14,8 +14,6 @@ const createUser = async (req, res) => {
   try {
     const data = req.body;
 
-    console.log(data);
-
     const userFound = await dbGetUserByEmail(data.email);
 
     if (userFound) {
@@ -23,7 +21,6 @@ const createUser = async (req, res) => {
     }
 
     data.password = encriptedPassword(data.password);
-    console.log("Antes de encriptar", data);
 
     const dataRegistered = await dbRegisterUser(data);
 

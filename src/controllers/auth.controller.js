@@ -36,4 +36,13 @@ const loginUser = async (req, res) => {
   res.json({ user: jsonUserFound, token });
 };
 
-export { loginUser };
+const reNewToken = (req, res) => {
+  const payload = req.payload;
+
+  delete payload.iat;
+  delete payload.exp;
+
+  res.json({ msg: "renovar token", payload });
+};
+
+export { loginUser, reNewToken };

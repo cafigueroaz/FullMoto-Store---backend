@@ -23,4 +23,4 @@ app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);
 });
 
-console.log("Project Moto BTA");
+console.log("Project FullMoto");

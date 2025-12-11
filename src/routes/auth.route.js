@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { createUser } from "../controllers/users.controllers.js";
-import { loginUser } from "../controllers/auth.controller.js";
+import { loginUser, reNewToken } from "../controllers/auth.controller.js";
+import authenticationUser from "../middlewares/authentication.middlewares.js";
+import authorizationUser from "../middlewares/authorization.middlewares.js";
+
 const router = Router();
 
 router.post("/register", createUser);
 router.post("/login", loginUser);
-// router.get("/renew-token");
+router.get("/renew-token", [authenticationUser, authorizationUser], reNewToken);
 
 export default router;

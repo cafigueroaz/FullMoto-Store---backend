@@ -4,4 +4,8 @@ const generateToken = (payload) => {
   return jwt.sign(payload, "aaaaaaaaaaaaaaa", { expiresIn: "1h" });
 };
 
-export { generateToken };
+const verifyToken = (token) => {
+  return jwt.verify(token, "aaaaaaaaaaaaaaa");
+};
+
+export { generateToken, verifyToken };

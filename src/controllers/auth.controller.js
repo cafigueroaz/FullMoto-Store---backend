@@ -25,6 +25,7 @@ const loginUser = async (req, res) => {
     name: userFound.name,
     email: userFound.email,
     role: userFound.role,
+    id: userFound._id,
   };
 
   const token = generateToken(payload);
@@ -36,13 +37,32 @@ const loginUser = async (req, res) => {
   res.json({ user: jsonUserFound, token });
 };
 
-const reNewToken = (req, res) => {
+const reNewToken = async (req, res) => {
   const payload = req.payload;
 
   delete payload.iat;
   delete payload.exp;
 
-  res.json({ msg: "renovar token", payload });
+  const userFound = await dbGetUserByEmail(payload.email);
+
+  if (!userFound) {
+    return res.json({
+      msg: "Error: El usuario ya no existe, no puede renovar el token",
+    });
+  }
+
+  const token = generateToken({
+    name: userFound.name,
+    email: userFound.email,
+    role: userFound.role,
+    id: userFound._id,
+  });
+
+  const jsonUserFound = userFound.toObject();
+
+  delete jsonUserFound.password;
+
+  res.json({ token, user: jsonUserFound });
 };
 
 export { loginUser, reNewToken };

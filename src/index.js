@@ -5,7 +5,7 @@ import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/products.route.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 dbConecction();
 

@@ -8,13 +8,24 @@ import {
   updateUserById,
 } from "../controllers/users.controllers.js";
 
+import authenticationUser from "../middlewares/authentication.middlewares.js";
+import authorizationUser from "../middlewares/authorization.middlewares.js";
+
 const router = Router();
 
 // Users:
-router.post("/", createUser);
-router.get("/", getAllUsers);
-router.get("/:idUser", getUserById);
-router.delete("/:idUser", deleteUserById);
-router.patch("/:idUser", updateUserById);
+router.post("/", [authenticationUser, authorizationUser], createUser);
+router.get("/", [authenticationUser, authorizationUser], getAllUsers);
+router.get("/:idUser", [authenticationUser, authorizationUser], getUserById);
+router.delete(
+  "/:idUser",
+  [authenticationUser, authorizationUser],
+  deleteUserById
+);
+router.patch(
+  "/:idUser",
+  [authenticationUser, authorizationUser],
+  updateUserById
+);
 
 export default router;

@@ -6,8 +6,6 @@ FullMoto es una plataforma eccommerce dedicada a la venta de accesorios para mot
 
 Entidad: Products
 
-<<<<<<< HEAD
-
 - [x] Crear producto.
 - [x] Obtener lista de productos.
 - [x] Actualizar producto.
@@ -20,3 +18,15 @@ Entidad: Products
 - [ ] Paginación de productos.
 - [ ] Ordenar productos (precio asc/desc, recientes, populares)
 - [ ] Obtener productos relacionados por categoría o marca
+
+Entidad: Users
+
+- [x] REgistrar usuario.
+- [x] Obtener lista de usuarios.
+- [ ] Actualizar usuario.
+- [ ] Eliminar usuario.
+- [ ] Buscar usuario por ID.
+- [ ] Buscar usuario por ID.
+- [ ] Autenticación de usuario (login).
+- [ ] Restablecimiento de contraseña.
+- [ ] Verificación de correo electrónico.

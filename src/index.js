@@ -2,11 +2,10 @@ import express from "express";
 import dbConecction from "./config/mongo.config.js";
 
 import productRoutes from "./routes/products.route.js";
+import reviewRoutes from "./routes/reviews.route.js";
 
 const app = express();
-app.use(express.json());
-
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 dbConecction();
 
@@ -14,10 +13,13 @@ app.get(`/health`, (req, res) => {
   res.json({ path: `/health`, msg: `Welcome to FullMoto` });
 });
 
+app.use(express.json());
+
 app.use(`/api/v1/products`, productRoutes);
+app.use(`/api/v1/reviews`, reviewRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);
 });
 
-console.log("Project Moto BTA");
+console.log("Project FullMoto");

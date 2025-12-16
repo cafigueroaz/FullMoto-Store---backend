@@ -31,10 +31,13 @@ const getReviewByProductId = async (req, res) => {
   }
 };
 
-const deleteReviewById = (req, res) => {
+const deleteReviewById = async (req, res) => {
   try {
-    console.log("delete review");
-    res.json({ msg: "delete review" });
+    const idReview = req.body.idReview;
+
+    const reviewDeleted = await dbDeleteReviewById(idReview);
+
+    res.json({ reviewDeleted });
   } catch (error) {
     console.error(error);
     res.json({ msg: "Error, no se puede eliminar review" });

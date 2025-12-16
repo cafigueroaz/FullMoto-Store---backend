@@ -4,8 +4,10 @@ const dbCreateReview = async (newReview) => {
   return await reviewModel.create(newReview);
 };
 
-const dbGetReviewById = async (_id) => {};
+const dbGetReviewByProductId = async (a) => {
+  return await reviewModel.find({ productId: a });
+};
 
 const dbDeleteReviewById = () => {};
 
-export { dbCreateReview, dbGetReviewById, dbDeleteReviewById };
+export { dbCreateReview, dbGetReviewByProductId, dbDeleteReviewById };

@@ -2,7 +2,7 @@ import reviewModel from "../models/reviews.model.js";
 import {
   dbCreateReview,
   dbDeleteReviewById,
-  dbGetReviewById,
+  dbGetReviewByProductId,
 } from "../services/reviews.services.js";
 
 const createReview = async (req, res) => {
@@ -18,10 +18,13 @@ const createReview = async (req, res) => {
   }
 };
 
-const getReviewById = (req, res) => {
+const getReviewByProductId = async (req, res) => {
   try {
-    console.log("get review");
-    res.json({ msg: "get review" });
+    const idProduct = req.body.idProduct;
+
+    const reviewsProduct = await dbGetReviewByProductId(idProduct);
+
+    res.json({ reviewsProduct });
   } catch (error) {
     console.error(error);
     res.json({ msg: "Error, no se puede obtener review" });
@@ -38,4 +41,4 @@ const deleteReviewById = (req, res) => {
   }
 };
 
-export { createReview, getReviewById, deleteReviewById };
+export { createReview, getReviewByProductId, deleteReviewById };

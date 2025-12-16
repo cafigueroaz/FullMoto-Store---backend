@@ -3,14 +3,14 @@ import { Router } from "express";
 
 import {
   createReview,
-  getReviewById,
+  getReviewByProductId,
   deleteReviewById,
 } from "../controllers/reviews.controller.js";
 
 const router = Router();
 
 router.post("/", createReview);
-router.get("/", getReviewById);
+router.get("/", getReviewByProductId);
 router.delete("/", deleteReviewById);
 
 export default router;

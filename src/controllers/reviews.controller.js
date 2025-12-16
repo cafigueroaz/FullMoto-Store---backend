@@ -1,9 +1,17 @@
 import reviewModel from "../models/reviews.model.js";
+import {
+  dbCreateReview,
+  dbDeleteReviewById,
+  dbGetReviewById,
+} from "../services/reviews.services.js";
 
-const createReview = (req, res) => {
+const createReview = async (req, res) => {
   try {
-    console.log("create review");
-    res.json({ msg: "create review" });
+    const inputData = req.body;
+
+    const reviewRegistered = await dbCreateReview(inputData);
+
+    res.json({ msg: "registrado", reviewRegistered });
   } catch (error) {
     console.error(error);
     res.json({ msg: "Error, no se puede crear review" });

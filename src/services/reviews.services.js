@@ -1,6 +1,8 @@
-import reviewModel from "../models/reviews.model";
+import reviewModel from "../models/reviews.model.js";
 
-const dbCreateReview = () => {};
+const dbCreateReview = async (newReview) => {
+  return await reviewModel.create(newReview);
+};
 
 const dbGetReviewById = () => {};
 

@@ -4,7 +4,7 @@ const dbCreateReview = async (newReview) => {
   return await reviewModel.create(newReview);
 };
 
-const dbGetReviewById = () => {};
+const dbGetReviewById = async (_id) => {};
 
 const dbDeleteReviewById = () => {};
 

@@ -1,9 +1,9 @@
 import cartModel from "../models/cart.model.js";
 
 const getCart = async (req, res) => {
-  const userId = req.body;
+  const user = req.body.userId;
 
-  res.json({ msg: "user" });
+  res.json({ user });
 };
 
 const addToCart = async (req, res) => {};

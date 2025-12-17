@@ -5,6 +5,7 @@ import reviewRoutes from "./routes/reviews.route.js";
 import userRoutes from "./routes/users.route.js";
 import authRoutes from "./routes/auth.route.js";
 import categoryRoutes from "./routes/categories.route.js";
+import cartRoutes from "./routes/cart.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.use(`/api/v1/users`, userRoutes);
 app.use(`/api/v1/products`, productRoutes);
 app.use(`/api/v1/reviews`, reviewRoutes);
 app.use(`/api/v1/categoria`, categoryRoutes);
+app.use(`/api/v1/cart`, cartRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);

@@ -62,6 +62,11 @@ const ProductSchema = new Schema(
       enum: ["active", "inactive"],
       default: "active",
     },
+    user_id: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+      required: false,
+    },
   },
   {
     versionKey: false,

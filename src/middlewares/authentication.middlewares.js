@@ -9,7 +9,7 @@ const authenticationUser = (req, res, next) => {
     // Verificar que la cadena no sea vacia.
 
     if (!token) {
-      return res.json({ meg: "Error: Cadena del token vacía." });
+      return res.json({ msg: "Error: Cadena del token vacía." });
     }
 
     //  Verificar si el token es valido.

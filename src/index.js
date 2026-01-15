@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dbConecction from "./config/mongo.config.js";
 import productRoutes from "./routes/products.route.js";
 import reviewRoutes from "./routes/reviews.route.js";
@@ -16,12 +17,13 @@ app.get(`/health`, (req, res) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/v1/auth", authRoutes);
 app.use(`/api/v1/users`, userRoutes);
 app.use(`/api/v1/products`, productRoutes);
 app.use(`/api/v1/reviews`, reviewRoutes);
-app.use(`/api/v1/categoria`, categoryRoutes);
+app.use(`/api/v1/categorias`, categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);

@@ -18,7 +18,7 @@ const router = Router();
 
 // Products:
 router.delete("/:idProduct", deleteProductById);
-router.post("/", [authenticationUser, authorizationUser], createProduct);
+router.post("/", createProduct);
 router.get("/", getAllProducts);
 router.get("/marcas", getProductsByBrand);
 router.get("/modelo", getProductsByCompatibility);

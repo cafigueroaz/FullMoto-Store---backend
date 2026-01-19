@@ -22,8 +22,8 @@ const createCategory = async (req, res) => {
 
 const getAllCategories = async (req, res) => {
   try {
-    const data = await dbGetAllCategories();
-    res.json({ data });
+    const categories = await dbGetAllCategories();
+    res.json({ categories });
   } catch (error) {
     console.error(error);
     res.json({

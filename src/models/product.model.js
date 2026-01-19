@@ -34,10 +34,7 @@ const ProductSchema = new Schema(
       type: String,
       trim: true,
     },
-    productType: {
-      type: String,
-      trim: true,
-    },
+
     compatibleWith: [
       {
         type: String,

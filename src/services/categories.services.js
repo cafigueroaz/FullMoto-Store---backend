@@ -16,4 +16,8 @@ const dbDeleteCategoryById = async (_id) => {
   return await categoriesModel.findOneAndDelete({ _id });
 }
 
-export { dbCreateCategory, dbGetAllCategories, dbGetCategoryById, dbDeleteCategoryById };
+const dbUpdateCategoryById = async (_id) => {
+  return await categoriesModel.findByIdAndUpdate(_id, { new: true });
+}
+
+export { dbCreateCategory, dbGetAllCategories, dbGetCategoryById, dbDeleteCategoryById, dbUpdateCategoryById};

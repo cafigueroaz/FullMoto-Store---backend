@@ -1,4 +1,6 @@
 import express from "express";
+import cors from "cors";
+
 import dbConecction from "./config/mongo.config.js";
 import productRoutes from "./routes/products.route.js";
 import reviewRoutes from "./routes/reviews.route.js";
@@ -11,12 +13,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 dbConecction();
+app.use(express.json());
+app.use(cors());
+
 
 app.get(`/health`, (req, res) => {
   res.json({ path: `/health`, msg: `Welcome to FullMoto` });
 });
-
-app.use(express.json());
 
 app.use("/api/v1/auth", authRoutes);
 app.use(`/api/v1/users`, userRoutes);

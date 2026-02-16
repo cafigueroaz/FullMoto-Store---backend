@@ -37,6 +37,11 @@ const UserSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    activationCode:{
+      type: String,
+      trim: true,
+      default: null,
+    }
   },
   {
     versionKey: false,

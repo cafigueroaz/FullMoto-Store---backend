@@ -17,10 +17,26 @@ const UserSchema = new Schema(
       lowercase: true,
       unique: true,
     },
-    password: { type: String, required: true, trim: true, minlength: 8 },
-
-    role: { type: String, enum: ["admin", "user", "staff"], default: "user" },
-    isActive: { type: Boolean, default: true },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+      minLength: 8,
+    },
+    role: {
+      type: String,
+      enum: ["admin", "user", "colaborator", "registered"],
+      default: "registered",
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    activationCode:{
+      type: String,
+      trim: true,
+      default: null,
+    }
   },
   {
     versionKey: false,

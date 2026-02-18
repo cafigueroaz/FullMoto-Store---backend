@@ -17,8 +17,18 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 const router = Router();
 
 // Products:
-router.delete("/:idProduct", deleteProductById);
-router.post("/", createProduct);
+
+router.delete(
+  "/:idProduct",
+  [authenticationUser, authorizationUser(["admin"])],
+  deleteProductById,
+);
+router.post(
+  "/",
+  [authenticationUser, authorizationUser(["admin", "colaborator"])],
+  createProduct,
+);
+
 router.get("/", getAllProducts);
 router.get("/marcas", getProductsByBrand);
 router.get("/modelo", getProductsByCompatibility);
@@ -28,8 +38,8 @@ router.get("/:idProduct", getProductById);
 
 router.patch(
   "/:idProduct",
-  [authenticationUser, authorizationUser],
-  updateProductById
+  [authenticationUser, authorizationUser(["admin", "colaborator"])],
+  updateProductById,
 );
 
 export default router;

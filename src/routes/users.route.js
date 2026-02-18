@@ -14,17 +14,18 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 const router = Router();
 
 // Users:
-router.post("/", [authenticationUser, authorizationUser], createUser);
-router.get("/", [authenticationUser, authorizationUser], getAllUsers);
-router.get("/:idUser", [authenticationUser, authorizationUser], getUserById);
+// Users:
+router.post("/", [authenticationUser, authorizationUser(['admin'])], createUser);
+router.get("/", [authenticationUser, authorizationUser(['admin'])], getAllUsers);
+router.get("/:idUser", [authenticationUser, authorizationUser(['admin', 'user', 'colaborator', 'registered'])], getUserById);
 router.delete(
   "/:idUser",
-  [authenticationUser, authorizationUser],
+  [authenticationUser, authorizationUser(['admin'])],
   deleteUserById
 );
 router.patch(
   "/:idUser",
-  [authenticationUser, authorizationUser],
+  [authenticationUser, authorizationUser(['admin', 'user', 'colaborator', 'registered'])],
   updateUserById
 );
 

@@ -3,7 +3,7 @@ import {
   dbGetAllCategories,
   dbGetCategoryById,
   dbDeleteCategoryById,
-  dbUpdateCategoryById
+  dbUpdateCategoryById,
 } from "../services/categories.services.js";
 
 const createCategory = async (req, res) => {
@@ -14,17 +14,21 @@ const createCategory = async (req, res) => {
     res.json({ categoriesCreated });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error: no se pudo crear la categoria", error });
+    res
+      .status(500)
+      .json({ msg: "Error: no se pudo crear la categoria", error });
   }
 };
 
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await dbGetAllCategories();
-    res.json({ categories });
+    const data = await dbGetAllCategories();
+    res.json(data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error: no se pudieron obtener las categorias", error });
+    res
+      .status(500)
+      .json({ msg: "Error: no se pudieron obtener las categorias", error });
   }
 };
 
@@ -36,7 +40,9 @@ const getCategoryById = async (req, res) => {
     res.json({ idcategory, category });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error: no se pudo obtener la categoria por Id", error });
+    res
+      .status(500)
+      .json({ msg: "Error: no se pudo obtener la categoria por Id", error });
   }
 };
 
@@ -48,7 +54,9 @@ const deleteCategoryById = async (req, res) => {
     res.json({ categoryDeleted });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error: no se pudo eliminar la categoria por Id", error });
+    res
+      .status(500)
+      .json({ msg: "Error: no se pudo eliminar la categoria por Id", error });
   }
 };
 
@@ -62,7 +70,9 @@ const updateCategoryById = async (req, res) => {
     res.json({ categoryUpdate });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ msg: "Error: no se pudo actualizar la categoria por Id", error });
+    res
+      .status(500)
+      .json({ msg: "Error: no se pudo actualizar la categoria por Id", error });
   }
 };
 
@@ -71,6 +81,5 @@ export {
   getAllCategories,
   getCategoryById,
   deleteCategoryById,
-  updateCategoryById
+  updateCategoryById,
 };
-

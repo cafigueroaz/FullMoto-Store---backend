@@ -12,6 +12,6 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 
 const router = Router();
 
-router.get("/", [authenticationUser, authorizationUser], getCart);
+router.get("/", [authenticationUser, authorizationUser(['admin', 'user', 'colaborator', 'registered'])], getCart);
 
 export default router;

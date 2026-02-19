@@ -20,12 +20,12 @@ const router = Router();
 
 router.delete(
   "/:idProduct",
-  [authenticationUser, authorizationUser(["admin"])],
+  [authenticationUser, authorizationUser(["admin", "staff"])],
   deleteProductById,
 );
 router.post(
   "/",
-  [authenticationUser, authorizationUser(["admin", "colaborator"])],
+  [authenticationUser, authorizationUser(["admin", "staff"])],
   createProduct,
 );
 
@@ -38,7 +38,7 @@ router.get("/:idProduct", getProductById);
 
 router.patch(
   "/:idProduct",
-  [authenticationUser, authorizationUser(["admin", "colaborator"])],
+  [authenticationUser, authorizationUser(["admin", "staff"])],
   updateProductById,
 );
 

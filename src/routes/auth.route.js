@@ -8,6 +8,6 @@ const router = Router();
 
 router.post("/register", createUser);
 router.post("/login", loginUser);
-router.get("/renew-token", [authenticationUser, authorizationUser(['admin', 'user', 'colaborator', 'registered'])], reNewToken);
+router.get("/renew-token", [authenticationUser, authorizationUser(['admin', 'user', 'staff'])], reNewToken);
 
 export default router;

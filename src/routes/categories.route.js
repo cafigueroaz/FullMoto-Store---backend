@@ -5,10 +5,10 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 
 const router = Router();
 
-router.post("/created", [authenticationUser, authorizationUser(['admin', 'colaborator'])], createCategory);
+router.post("/created", [authenticationUser, authorizationUser(['admin', 'staff'])], createCategory);
 router.get("/get-all", getAllCategories);
 router.get("/get-by-id/:idcategory", getCategoryById);
-router.patch("/update/:idcategory", [authenticationUser, authorizationUser(['admin', 'colaborator'])], updateCategoryById);
-router.delete("/delete/:idcategory", [authenticationUser, authorizationUser(['admin'])], deleteCategoryById);
+router.patch("/update/:idcategory", [authenticationUser, authorizationUser(['admin', 'staff'])], updateCategoryById);
+router.delete("/delete/:idcategory", [authenticationUser, authorizationUser(['admin', 'staff'])], deleteCategoryById);
 
 export default router;

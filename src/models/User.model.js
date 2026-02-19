@@ -25,23 +25,23 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "user", "colaborator", "registered"],
-      default: "registered",
+      enum: ["user", "staff", "admin"],
+      default: "user",
     },
     isActive: {
       type: Boolean,
       default: true,
     },
-    activationCode:{
+    activationCode: {
       type: String,
       trim: true,
       default: null,
-    }
+    },
   },
   {
     versionKey: false,
     timestamps: true,
-  }
+  },
 );
 
 export default model("users", UserSchema);

@@ -38,10 +38,7 @@ const getAllProducts = async (req, res) => {
   try {
     const Products = await dbGetAllProducts();
 
-    res.json({
-      msg: "Obtiene todos los productos",
-      Products,
-    });
+    res.json(Products);
   } catch (error) {
     console.error(error);
     res.json({

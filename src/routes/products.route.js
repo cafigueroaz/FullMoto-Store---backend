@@ -20,12 +20,12 @@ const router = Router();
 
 router.delete(
   "/:idProduct",
-  [authenticationUser, authorizationUser(["admin", "staff"])],
+  // [authenticationUser, authorizationUser(["admin", "staff"])],
   deleteProductById,
 );
 router.post(
   "/",
-  [authenticationUser, authorizationUser(["admin", "staff"])],
+  // [authenticationUser, authorizationUser(["admin", "staff"])],
   createProduct,
 );
 

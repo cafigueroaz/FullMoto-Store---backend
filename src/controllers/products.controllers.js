@@ -14,9 +14,6 @@ import {
 const createProduct = async (req, res) => {
   try {
     const data = req.body;
-    // const user_id = req.payload.id;
-
-    // data.user_id = user_id;
 
     console.log("Hola", req.body);
 

@@ -7,13 +7,6 @@ const categoriesSchema = new Schema(
       required: true,
       trim: true,
     },
-    slug: {
-      type: String,
-      required: true,
-      trim: true,
-      lowercase: true,
-      unique: true,
-    },
     description: {
       type: String,
       required: true,
@@ -32,7 +25,7 @@ const categoriesSchema = new Schema(
   {
     versionKey: false,
     timestamps: true,
-  }
+  },
 );
 
 const categoriesModel = model("categories", categoriesSchema);

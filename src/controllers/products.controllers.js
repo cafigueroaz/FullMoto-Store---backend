@@ -49,10 +49,7 @@ const getProductById = async (req, res) => {
     const idProduct = req.params.idProduct;
     const Product = await dbGetProductById(idProduct);
 
-    res.json({
-      id: idProduct,
-      Product,
-    });
+    res.json(Product);
   } catch (error) {
     console.error(error);
     res.json({

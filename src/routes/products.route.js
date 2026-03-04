@@ -38,7 +38,7 @@ router.get("/:idProduct", getProductById);
 
 router.patch(
   "/:idProduct",
-  [authenticationUser, authorizationUser(["admin", "staff"])],
+  // [authenticationUser, authorizationUser(["admin", "staff"])],
   updateProductById,
 );
 

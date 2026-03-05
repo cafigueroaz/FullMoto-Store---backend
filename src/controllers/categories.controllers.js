@@ -37,7 +37,7 @@ const getCategoryById = async (req, res) => {
     const idcategory = req.params.idcategory;
     const category = await dbGetCategoryById(idcategory);
 
-    res.json({ idcategory, category });
+    res.json(category);
   } catch (error) {
     console.error(error);
     res

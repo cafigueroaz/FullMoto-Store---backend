@@ -9,8 +9,16 @@ import {
 const createCategory = async (req, res) => {
   try {
     const data = req.body;
-    const categoriesCreated = await dbCreateCategory(data);
 
+    data.slug = data.name
+      .toLowerCase()
+      .trim()
+      .normalize("NFD") // separa acentos: á → a + ́
+      .replace(/[\u0300-\u036f]/g, "") // elimina los acentos
+      .replace(/[^a-z0-9\s-]/g, "") // elimina caracteres especiales
+      .replace(/\s+/g, "-"); // espacios → guiones
+
+    const categoriesCreated = await dbCreateCategory(data);
     res.json({ categoriesCreated });
   } catch (error) {
     console.error(error);

@@ -4,8 +4,21 @@ const dbRegisterProduct = async (newProduct) => {
   return await productModel.create(newProduct);
 };
 
-const dbGetAllProducts = async () => {
-  return await productModel.find().populate("categoryId", "name");
+const dbGetAllProducts = async ({ sort = "featured", order = "desc" } = {}) => {
+  const sortFields = {
+    price: "price",
+    rating: "rating",
+    featured: "createdAt",
+    name: "name",
+  };
+
+  const sortField = sortFields[sort] ?? "createdAt";
+  const sortOrder = order === "asc" ? 1 : -1;
+
+  return await productModel
+    .find()
+    .populate("categoryId")
+    .sort({ [sortField]: sortOrder });
 };
 
 const dbGetProductById = async (_id) => {

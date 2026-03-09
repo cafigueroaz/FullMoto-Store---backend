@@ -30,6 +30,16 @@ const ProductSchema = new Schema(
       ref: "categories",
       required: true,
     },
+
+    rating: {
+      type: Number,
+      min: 0,
+      max: 5,
+      min: 0,
+      default: 5,
+      required: true,
+    },
+
     brand: {
       type: String,
       trim: true,
@@ -68,7 +78,7 @@ const ProductSchema = new Schema(
   {
     versionKey: false,
     timestamps: true,
-  }
+  },
 );
 
 const productModel = model("products", ProductSchema);

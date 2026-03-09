@@ -33,14 +33,12 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const Products = await dbGetAllProducts();
-
-    res.json(Products);
+    const { sort = "featured", order = "desc" } = req.query;
+    const products = await dbGetAllProducts({ sort, order });
+    res.json(products);
   } catch (error) {
     console.error(error);
-    res.json({
-      msg: "Error: no se pudo obtener el listado de productos",
-    });
+    res.json({ msg: "Error: no se pudo obtener el listado de productos" });
   }
 };
 

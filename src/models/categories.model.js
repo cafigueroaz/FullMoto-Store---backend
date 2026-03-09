@@ -21,6 +21,10 @@ const categoriesSchema = new Schema(
       required: true,
       trim: true,
     },
+    slug: {
+      type: String,
+      trim: true,
+    },
   },
   {
     versionKey: false,

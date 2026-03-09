@@ -43,9 +43,7 @@ const getAllUsers = async (req, res) => {
   try {
     const users = await dbGetAllUsers();
 
-    res.json({
-      users,
-    });
+    res.json(users);
   } catch (error) {
     console.error(error);
     res.json({
@@ -59,10 +57,7 @@ const getUserById = async (req, res) => {
     const idUser = req.params.idUser;
     const user = await dbGetUserById(idUser);
 
-    res.json({
-      id: idUser,
-      user,
-    });
+    res.json(user);
   } catch (error) {
     console.error(error);
     res.json({
@@ -94,10 +89,7 @@ const updateUserById = async (req, res) => {
 
     const updateUser = await dbUpdateUserById(idUser, inputData);
 
-    res.json({
-      msg: "Usuario actualizado",
-      updateUser,
-    });
+    res.json(updateUser);
   } catch (error) {
     console.error(error);
     res.json({

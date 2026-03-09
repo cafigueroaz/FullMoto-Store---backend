@@ -15,7 +15,6 @@ dbConecction();
 app.use(express.json());
 app.use(cors());
 
-
 app.get(`/health`, (req, res) => {
   res.json({ path: `/health`, msg: `Welcome to FullMoto` });
 });
@@ -27,7 +26,6 @@ app.use(`/api/v1/reviews`, reviewRoutes);
 
 app.use(`/api/v1/categorias`, categoryRoutes);
 app.use(`/api/v1/cart`, cartRoutes);
-
 
 app.listen(PORT, () => {
   console.log(`Server runnig on http://localhost:${PORT}`);

@@ -1,25 +1,76 @@
-import cartModel from "../models/cart.model.js";
+import {
+  dbGetCartByUser,
+  dbAddItemToCart,
+  dbUpdateItemQuantity,
+  dbRemoveItemFromCart,
+  dbClearCart,
+} from "../services/cart.services.js";
 
 const getCart = async (req, res) => {
-  const user = req.body.userId;
-
-  res.json({ user });
-};
-
-const addToCart = async (req, res) => {
   try {
-    const product = req.params.idProduct;
-    items.push(product);
+    const userId = req.payload.id;
+    const cart = await dbGetCartByUser(userId);
+    res.json(cart);
   } catch (error) {
     console.error(error);
-    res.json({ msg: "Error: no se pudo agregar el producto", error });
+    res.json({ msg: "Error: no se pudo obtener el carrito" });
   }
 };
 
-const updateCartItem = async (req, res) => {};
+const addItemToCart = async (req, res) => {
+  try {
+    const userId = req.payload.id;
+    const { productId, quantity, price } = req.body;
 
-const removeFromCart = async (req, res) => {};
+    const cart = await dbAddItemToCart(userId, productId, quantity, price);
+    res.json({ msg: "Producto agregado al carrito", cart });
+  } catch (error) {
+    console.error(error);
+    res.json({ msg: "Error: no se pudo agregar el producto al carrito" });
+  }
+};
 
-const clearCart = async (req, res) => {};
+const updateItemQuantity = async (req, res) => {
+  try {
+    const userId = req.payload.id;
+    const { productId, quantity } = req.body;
 
-export { getCart, addToCart, updateCartItem, removeFromCart, clearCart };
+    const cart = await dbUpdateItemQuantity(userId, productId, quantity);
+    res.json({ msg: "Cantidad actualizada", cart });
+  } catch (error) {
+    console.error(error);
+    res.json({ msg: "Error: no se pudo actualizar la cantidad" });
+  }
+};
+
+const removeItemFromCart = async (req, res) => {
+  try {
+    const userId = req.payload.id;
+    const { productId } = req.params;
+
+    const cart = await dbRemoveItemFromCart(userId, productId);
+    res.json({ msg: "Producto eliminado del carrito", cart });
+  } catch (error) {
+    console.error(error);
+    res.json({ msg: "Error: no se pudo eliminar el producto del carrito" });
+  }
+};
+
+const clearCart = async (req, res) => {
+  try {
+    const userId = req.payload.id;
+    const cart = await dbClearCart(userId);
+    res.json({ msg: "Carrito vaciado", cart });
+  } catch (error) {
+    console.error(error);
+    res.json({ msg: "Error: no se pudo vaciar el carrito" });
+  }
+};
+
+export {
+  getCart,
+  addItemToCart,
+  updateItemQuantity,
+  removeItemFromCart,
+  clearCart,
+};

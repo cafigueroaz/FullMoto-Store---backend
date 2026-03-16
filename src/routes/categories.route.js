@@ -11,19 +11,24 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 
 const router = Router();
 
-router.post("/created", authenticationUser, authorizationUser, createCategory);
+router.post(
+  "/created",
+  authenticationUser,
+  authorizationUser(["admin", "staff"]),
+  createCategory,
+);
 router.get("/", getAllCategories);
 router.get("/:idcategory", getCategoryById);
 router.patch(
   "/:idcategory",
   authenticationUser,
-  authorizationUser,
+  authorizationUser(["admin", "staff"]),
   updateCategoryById,
 );
 router.delete(
   "/delete/:idcategory",
   authenticationUser,
-  authorizationUser,
+  authorizationUser(["admin", "staff"]),
   deleteCategoryById,
 );
 

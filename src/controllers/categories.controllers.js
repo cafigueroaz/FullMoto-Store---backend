@@ -19,7 +19,7 @@ const createCategory = async (req, res) => {
       .replace(/\s+/g, "-"); // espacios → guiones
 
     const categoriesCreated = await dbCreateCategory(data);
-    res.json({ categoriesCreated });
+    res.json(categoriesCreated);
   } catch (error) {
     console.error(error);
     res

@@ -93,11 +93,11 @@ const updateProductById = async (req, res) => {
 
 const getProductByCategory = async (req, res) => {
   try {
-    const category = req.body.categoryId;
+    const category = req.params.categoryId;
 
     const products = await dbGetProductByCategory(category);
 
-    res.json({ products });
+    res.json(products);
   } catch (error) {
     console.error(error);
     res.json({ msg: "Error: no se pudo encontrar el producto por categoria" });

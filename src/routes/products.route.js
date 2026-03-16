@@ -33,7 +33,7 @@ router.get("/", getAllProducts);
 router.get("/marcas", getProductsByBrand);
 router.get("/modelo", getProductsByCompatibility);
 router.get("/price-range", getProductsByPriceRange);
-router.get("/categorias", getProductByCategory);
+router.get("/categorias/:categoryId", getProductByCategory);
 router.get("/:idProduct", getProductById);
 
 router.patch(

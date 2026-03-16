@@ -11,10 +11,20 @@ import authorizationUser from "../middlewares/authorization.middlewares.js";
 
 const router = Router();
 
-router.post("/created", createCategory);
+router.post("/created", authenticationUser, authorizationUser, createCategory);
 router.get("/", getAllCategories);
 router.get("/:idcategory", getCategoryById);
-router.patch("/:idcategory", updateCategoryById);
-router.delete("/delete/:idcategory", deleteCategoryById);
+router.patch(
+  "/:idcategory",
+  authenticationUser,
+  authorizationUser,
+  updateCategoryById,
+);
+router.delete(
+  "/delete/:idcategory",
+  authenticationUser,
+  authorizationUser,
+  deleteCategoryById,
+);
 
 export default router;

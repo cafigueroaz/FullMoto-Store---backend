@@ -6,6 +6,7 @@ import {
   getUserById,
   deleteUserById,
   updateUserById,
+  changePassword
 } from "../controllers/users.controllers.js";
 
 import authenticationUser from "../middlewares/authentication.middlewares.js";
@@ -39,6 +40,11 @@ router.patch(
   "/:idUser",
   [authenticationUser, authorizationUser(["admin", "user", "staff"])],
   updateUserById,
+);
+router.patch(
+  "/:idUser/change-password",
+  [authenticationUser, authorizationUser(["admin", "user", "staff"])],
+  changePassword,
 );
 
 export default router;

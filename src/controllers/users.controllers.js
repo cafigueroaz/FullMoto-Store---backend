@@ -6,6 +6,7 @@ import {
   dbDeletedUserById,
   dbUpdateUserById,
   dbGetUserByEmail,
+  dbChangePassword
 } from "../services/user.services.js";
 
 import { encriptedPassword } from "../helpers/bcrypt.helpers.js";
@@ -98,4 +99,16 @@ const updateUserById = async (req, res) => {
   }
 };
 
-export { createUser, getAllUsers, getUserById, deleteUserById, updateUserById };
+const changePassword = async (req, res) => {
+  try {
+    const { idUser } = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    await dbChangePassword(idUser, currentPassword, newPassword);
+    res.status(200).json({ msg: "Contraseña actualizada correctamente" });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+};
+
+export { createUser, getAllUsers, getUserById, deleteUserById, updateUserById, changePassword };
